@@ -1,0 +1,27 @@
+实现功能：
+	1.用户注册，登录认证
+	2.在线进行单词查询
+	3.在线进行历史记录查询
+	4.在线删除指定用户的历史记录
+sever:
+	//需要文件描述符，传输结构体
+	void do_register(int acceptfd,MSG *msg,sqlite3 *db); 
+		/*
+			acceptfd:套接字描述符
+			*msg:消息结构体
+			*db:数据库
+		*/
+		sqlite3_exec:用于执行sql语句对数据表进行操作		
+	int history(int acceptfd,MSG *msg,sqlite3 *db);//历史记录查询
+		/*
+			acceptfd:套接字描述符
+			*msg:消息结构体
+			*db:数据库
+			return : 
+				-1:失败
+				 1:成功
+		*/
+client:
+	R 1 //注册   L 2 //登录  Q 3 //查询单词  H 4 //查询历史记录   
+	N 20//大小  D 5 //删除  DATABASE "dict.db"   数据库加载
+
